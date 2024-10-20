@@ -79,9 +79,9 @@
             
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
             
-    <aem.sdk.api>2023.8.13099.20230810T160553Z-230702</aem.sdk.api>
+    <aem.sdk.api>2024.7.17258.20240726T172406Z-240700</aem.sdk.api>
             
-    <aemanalyser.version>1.4.10</aemanalyser.version>
+    <aemanalyser.version>1.6.4</aemanalyser.version>
             
     <componentGroupName>AEM Cloud</componentGroupName>
         
