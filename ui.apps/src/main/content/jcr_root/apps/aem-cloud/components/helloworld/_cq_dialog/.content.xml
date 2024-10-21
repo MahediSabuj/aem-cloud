@@ -16,6 +16,9 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Text"
                         name="./text"/>
+                    <textStyle jcr:primaryType="nt:unstructured"
+                       sling:resourceType="granite/ui/components/coral/foundation/include"
+                       path="/apps/aem-cloud/components/common/color"/>
                 </items>
             </column>
         </items>
