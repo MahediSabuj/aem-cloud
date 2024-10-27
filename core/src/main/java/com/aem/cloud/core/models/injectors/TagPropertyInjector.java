@@ -1,11 +1,10 @@
 package com.aem.cloud.core.models.injectors;
 
 import com.aem.cloud.core.models.injectors.annotations.TagProperty;
+import com.aem.cloud.core.utils.ResourceUtil;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.spi.DisposalCallbackRegistry;
 import org.apache.sling.models.spi.Injector;
@@ -37,7 +36,7 @@ public class TagPropertyInjector implements Injector {
         if (element.isAnnotationPresent(TagProperty.class)) {
             TagProperty annotation = element.getAnnotation(TagProperty.class);
 
-            ResourceResolver resourceResolver = getResourceResolver(adaptable);
+            ResourceResolver resourceResolver = ResourceUtil.getResourceResolver(adaptable);
             if (resourceResolver == null) {
                 logger.error("ResourceResolver is null, cannot inject tag property. " +
                         "Are you adapting from a resource or SlingHttpServletRequest?");
@@ -51,35 +50,13 @@ public class TagPropertyInjector implements Injector {
             }
 
             String key =  StringUtils.defaultIfEmpty(annotation.name(), name);
-            final String[] tagKeys = getResource(adaptable).getValueMap().get(key, String[].class);
+            final String[] tagKeys = ResourceUtil.getResource(adaptable).getValueMap().get(key, String[].class);
             if (tagKeys == null || tagKeys.length == 0){
                 return null;
             }
 
             final Stream<Tag> tagStream = Arrays.stream(tagKeys).map(tagManager::resolve);
             return tagStream.filter(Objects::nonNull).findFirst().orElse(null);
-        }
-
-        return null;
-    }
-
-    private static ResourceResolver getResourceResolver(Object adaptable) {
-        if (adaptable instanceof SlingHttpServletRequest) {
-            return ((SlingHttpServletRequest) adaptable).getResourceResolver();
-        }
-        if (adaptable instanceof Resource) {
-            return ((Resource) adaptable).getResourceResolver();
-        }
-
-        return null;
-    }
-
-    private static Resource getResource(Object adaptable) {
-        if (adaptable instanceof SlingHttpServletRequest) {
-            return ((SlingHttpServletRequest) adaptable).getResource();
-        }
-        if (adaptable instanceof Resource) {
-            return (Resource) adaptable;
         }
 
         return null;

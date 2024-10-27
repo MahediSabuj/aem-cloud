@@ -15,10 +15,10 @@ import static java.lang.annotation.ElementType.*;
 @Retention(RetentionPolicy.RUNTIME)
 @InjectAnnotation
 @Source(TagProperty.SOURCE)
-public @interface TagProperty {
+public @interface ContentFragment {
     String name() default StringUtils.EMPTY;
 
-    String SOURCE = "tag-property";
+    String SOURCE = "content-fragment";
 
     InjectionStrategy injectionStrategy() default InjectionStrategy.DEFAULT;
 }
