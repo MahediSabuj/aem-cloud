@@ -19,6 +19,26 @@
                     <textStyle jcr:primaryType="nt:unstructured"
                        sling:resourceType="granite/ui/components/coral/foundation/include"
                        path="/apps/aem-cloud/components/common/color"/>
+                    <fragmentPath jcr:primaryType="nt:unstructured"
+                      sling:resourceType="dam/cfm/components/cfpicker"
+                      name="./fragmentPath"
+                      fieldDescription="Path to the Content Fragment to display."
+                      fieldLabel="Content Fragment"
+                      emptyText="Enter or select Content Fragment"
+                      forceSelection="{Boolean}true"
+                      required="{Boolean}true"
+                      multiple="{Boolean}false"
+                      pickerTitle="Select Content Fragment"
+                      rootPath="/content/dam/aem-cloud"/>
+                    <articleTopics jcr:primaryType="nt:unstructured"
+                      sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                      fieldLabel="Article Topics"
+                      multiple="{Boolean}true"
+                      name="./articleTopics"
+                      emptyText="Article Topics"
+                      forceSelection="{Boolean}true"
+                      required="{Boolean}true"
+                      rootPath="/content/cq:tags/aem-cloud"/>
                 </items>
             </column>
         </items>

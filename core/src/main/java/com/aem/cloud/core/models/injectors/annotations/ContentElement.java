@@ -14,11 +14,11 @@ import static java.lang.annotation.ElementType.*;
 @Target({ METHOD, FIELD, PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 @InjectAnnotation
-@Source(ContentFragment.SOURCE)
-public @interface ContentFragment {
+@Source(ContentElement.SOURCE)
+public @interface ContentElement {
     String name() default StringUtils.EMPTY;
 
-    String SOURCE = "content-fragment";
+    String SOURCE = "content-element";
 
     InjectionStrategy injectionStrategy() default InjectionStrategy.DEFAULT;
 }

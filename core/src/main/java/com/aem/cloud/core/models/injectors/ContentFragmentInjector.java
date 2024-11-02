@@ -41,10 +41,7 @@ public class ContentFragmentInjector implements Injector {
                     if (StringUtils.isNotBlank(fragmentPath)) {
                         Resource fragmentResource = resourceResolver.getResource(fragmentPath);
                         if (fragmentResource != null) {
-                            com.adobe.cq.dam.cfm.ContentFragment fragment = resource.adaptTo(com.adobe.cq.dam.cfm.ContentFragment.class);
-                            if (fragment != null) {
-                                
-                            }
+                            return fragmentResource.adaptTo(com.adobe.cq.dam.cfm.ContentFragment.class);
                         }
                     }
                 }

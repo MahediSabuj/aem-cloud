@@ -51,7 +51,7 @@ public class TagPropertyInjector implements Injector {
 
             String key =  StringUtils.defaultIfEmpty(annotation.name(), name);
             final String[] tagKeys = ResourceUtil.getResource(adaptable).getValueMap().get(key, String[].class);
-            if (tagKeys == null || tagKeys.length == 0){
+            if (tagKeys == null || tagKeys.length == 0) {
                 return null;
             }
 
